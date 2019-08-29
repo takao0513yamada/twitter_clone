@@ -1,14 +1,18 @@
 <h1>Tweets#show</h1>
 <p>Find me in app/views/tweets/show.html.erb</p>
 
-<p><span>email: </span><%= @user.email %></p>
+<p><span>email: </span><%= @tweet.user.email %></p>
 <p><span>ツイート内容: </span><%= @tweet.body %></p>
 
 
-<%= form_for @comment do |f| %>
+<% @tweet.comments.each do |comment| %>
+  <p><%= comment.body %></p>
+<% end %>
+
+
+<%= form_tag tweet_comments_path(@tweet.id) do %>
   <p>
-    <%= f.label :body,"ツイート" %>
-    <%= f.text_field :body %>
+    <%= text_field_tag :body %>
   </p>
-  <%= f.submit %>
+  <%= submit_tag("Submit") %>
 <% end %>
