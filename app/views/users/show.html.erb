@@ -11,5 +11,6 @@
 <h2>お気に入り</h2>
 <% @favorite_tweets.each do |tweet| %>
   <hr>
+  <p>投稿者： <%= tweet.user.email %></p>
   <p><span>ファボツイート内容: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
 <% end %>
