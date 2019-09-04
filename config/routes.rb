@@ -19,4 +19,10 @@ Rails.application.routes.draw do
   resources :tweets do
     resource :comments, only: [:create, :destroy]
   end
+
+  resources :users do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member
+    get :followers, on: :member
+  end
 end
